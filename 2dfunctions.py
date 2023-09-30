@@ -1,7 +1,7 @@
 import lib
 from lib import *
 
-def func2d():
+def func():
     t=sp.Symbol('t')
     
     xinput=input("x wrt. t: ")
@@ -33,9 +33,9 @@ def func2d():
     #  CHANGE THESE
     # 
     F1input=input("F1 wrt. x,y: ")
-    F1=parse_mathematica(F1input, transformations='all')
+    F1=parse_expr(F1input, transformations='all')
     F2input=input("F2 wrt. x,y: ")
-    F2=parse_mathematica(F2input, transformations='all')
+    F2=parse_expr(F2input, transformations='all')
     # 
 
     print("F1, F2= ", F1, F2)
@@ -45,5 +45,3 @@ def func2d():
 
     int=sp.integrate(F, ('t', tmin, tmax))
     print("answer= ", int)
-
-func2d();

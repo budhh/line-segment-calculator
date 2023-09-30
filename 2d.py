@@ -1,13 +1,19 @@
 import lib
 from lib import *
 
-def func2d():
-    x1=0
-    y1=0
+def func():
 
-    x2=2
-    y2=1
-    # 
+    x1input=input("x1 wrt. t: ")
+    x1=parse_expr(x1input, transformations='all')
+
+    y1input=input("y1 wrt. t: ")
+    y1=parse_expr(y1input, transformations='all')
+
+    x2input=input("x2 wrt. t: ")
+    x2=parse_expr(x2input, transformations='all')
+
+    y2input=input("y2 wrt. t: ")
+    y2=parse_expr(y2input, transformations='all')
 
     t=sp.Symbol('t')
 
@@ -34,9 +40,12 @@ def func2d():
     print("rnorm= ", rnorm)
 
     #  CHANGE THESE
-    # 
-    F1=x+2*y
-    F2=x**2
+    F1input=input("F1 wrt. x,y: ")
+    F1=parse_expr(F1input, transformations='all')
+    F2input=input("F2 wrt. x,y: ")
+    F2=parse_expr(F2input, transformations='all')
+    # F1=x+2*y
+    # F2=x**2
     # 
 
     print("F1, F2= ", F1, F2)
