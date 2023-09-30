@@ -1,5 +1,5 @@
-import sympy as sp
-import numpy as np
+import lib
+from lib import *
 
 def func3d():
     x1=1

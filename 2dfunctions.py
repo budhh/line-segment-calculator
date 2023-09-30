@@ -2,17 +2,14 @@ import lib
 from lib import *
 
 def func2d():
-    x1=0
-    y1=0
-
-    x2=2
-    y2=1
-    # 
-
     t=sp.Symbol('t')
+    
+    xinput=input("x wrt. t: ")
+    x=parse_expr(xinput, transformations='all')
 
-    x=x1+t*(x2-x1)
-    y=y1+t*(y2-y1)
+    yinput=input("y wrt. t: ")
+    y=parse_expr(yinput, transformations='all')
+
     print("x= ", x)
     print("y= ", y)
 
@@ -35,8 +32,10 @@ def func2d():
 
     #  CHANGE THESE
     # 
-    F1=x+2*y
-    F2=x**2
+    F1input=input("F1 wrt. x,y: ")
+    F1=parse_mathematica(F1input, transformations='all')
+    F2input=input("F2 wrt. x,y: ")
+    F2=parse_mathematica(F2input, transformations='all')
     # 
 
     print("F1, F2= ", F1, F2)
@@ -46,3 +45,5 @@ def func2d():
 
     int=sp.integrate(F, ('t', tmin, tmax))
     print("answer= ", int)
+
+func2d();
