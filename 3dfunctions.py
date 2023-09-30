@@ -1,60 +1,45 @@
 import lib
 from lib import *
 
-def func3d():
-    x1=1
-    y1=0
-    z1=0
 
-    x2=-2
-    y2=1
-    z2=2
-    # 
+def func():
+    t = sp.Symbol('t')
+    pi = sp.Symbol('pi', real=True, positive=True)
 
-    t=sp.Symbol('t')
-    pi=sp.Symbol('pi', real = True, positive = True)
-
-    x=cos(t)
-    y=sin(t)
-    z=t
-
-    # x=x1+t*(x2-x1)
-    # y=y1+t*(y2-y1)
-    # z=z1+t*(z2-z1)
+    x = parse_expr(input("x wrt. t: "), transformations='all')
+    y = parse_expr(input("y wrt. t: "), transformations='all')
+    z = parse_expr(input("z wrt. t: "), transformations='all')
 
     print("x= ", x)
     print("y= ", y)
     print("z= ", z)
 
-    tmin=0
-    tmax=pi
+    tmin = parse_expr(input("tmin (number): "), transformations='all
+    tmax = parse_expr(input("tmax (number): "), transformations='all')
 
-    r = sp.Matrix([x,y,z])
+    r = sp.Matrix([x, y, z])
 
     print("r= ", r)
 
     rprime = r.diff('t')
     print("rprime= ", rprime)
 
-    dx=rprime[0]
-    dy=rprime[1]
-    dz=rprime[2]
+    dx = rprime[0]
+    dy = rprime[1]
+    dz = rprime[2]
     print("dx, dy, dz= ", dx, dy, dz)
 
-    rnorm=rprime.norm()
+    rnorm = rprime.norm()
     print("rnorm= ", rnorm)
 
-    #  CHANGE THESE
-    # 
-    F1=x
-    F2=y
-    F3=y*z
-    # 
+    F1 = parse_expr(input("F1 wrt. x,y,z: "), transformations='all')
+    F2 = parse_expr(input("F2 wrt. x,y,z: "), transformations='all')
+    F3 = parse_expr(input("F3 wrt. x,y,z: "), transformations='all')
 
     print("F1, F2, F3= ", F1, F2, F3)
 
-    F=rnorm * (F1*dx + F2*dy + F3*dz)
+    F = rnorm * (F1*dx + F2*dy + F3*dz)
     print("F= ", F)
 
-    int=sp.integrate(F, ('t', tmin, tmax))
+    int = sp.integrate(F, ('t', tmin, tmax))
     print("answer= ", int)
